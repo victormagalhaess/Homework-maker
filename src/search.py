@@ -5,7 +5,6 @@ import os
 def search(theme, lang):
     print("Input " + theme + " received with success! Searching on Wikipedia...")
     wikipediaDirtyData = dowloadWikipediaData(theme, lang)
-    return wikipediaDirtyData
     wikipediaCleanData = cleanWikipediaData(wikipediaDirtyData)
     searchData = breakDataInSentences(wikipediaCleanData)
     return searchData
