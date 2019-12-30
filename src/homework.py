@@ -13,10 +13,13 @@ def askCredentials():
         
 
 def core():
-    studentData = student(input("Write your name: "), input("Write your grade (e.g 1st, 2nd..): "), input("Write your teacher's name: "), input("Write your school's name: "))
-    language = input("Write the language code of your research: (supported codes: en (english, pt(portuguese)): ")
+    studentData = (input("Write your name: "), input("Write your grade (e.g 1st, 2nd..): "), input("Write your teacher's name: "), input("Write your school's name: "))
+    language = input("Write the language code of your research: (supported codes: en (english), pt(portuguese)): ")
     theme = input("Write the theme of your homework research: ")
     searchData = search(theme, language)
+    print(searchData['content'])
+    with open('./result.txt', 'w+') as resultFile:
+        resultFile.write(searchData['content'])
     #themeTags = textProcessing(searchData)
     #images = imagesDownload(themeTags)
     #generateLatex(studentData, theme, searchData, images)
