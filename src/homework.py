@@ -2,6 +2,7 @@ import sys
 import json
 from student import student
 from search import search
+from images import images
 
 def askCredentials():
     with open('credentials/algorithmia.json', 'r') as algorithmiaCredentialsFile:
@@ -18,10 +19,11 @@ def core():
     language = input("Write the language code of your research: (supported codes: en (english), pt(portuguese)): ")
     theme = input("Write the theme of your homework research: ")
     searchData = search(theme, language)
-    with open('./result.txt', 'w+') as resultFile:
+    with open('./result.txt', 'w+', encoding="utf-8") as resultFile:
         resultFile.write(studentData.getHeader())
-    with open('./result.txt', 'a') as resultFile:
+    with open('./result.txt', 'a', encoding="utf-8") as resultFile:
         resultFile.write(searchData['content'])
+    images(theme)
     #images = imagesDownload(themeTags)
     #generateWord(studentData, theme, searchData, images)
 

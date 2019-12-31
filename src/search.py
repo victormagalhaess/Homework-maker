@@ -30,9 +30,6 @@ def dowloadWikipediaData(theme, lang):
 
 
 def cleanWikipediaData(dirtyData):
-    pattern = re.compile(r'(\(|=+)[^=)]*(=+|\))')
+    pattern = re.compile(r'(=+)[^=]*(=+)')
     return(re.sub(pattern, '', dirtyData))
 
-
-def breakDataInSentences(cleanData):
-    pass
