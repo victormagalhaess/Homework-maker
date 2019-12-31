@@ -1,14 +1,15 @@
 import Algorithmia
 import json
 import os
+import re
 
 def search(theme, lang):
     print("Input " + theme + " received with success! Searching on Wikipedia...")
     wikipediaDirtyData = dowloadWikipediaData(theme, lang)
-    return wikipediaDirtyData
-    # wikipediaCleanData = cleanWikipediaData(wikipediaDirtyData)
+    wikipediaCleanData = wikipediaDirtyData
+    wikipediaCleanData['content'] = cleanWikipediaData(wikipediaCleanData['content'])
     # searchData = breakDataInSentences(wikipediaCleanData)
-    # return searchData
+    return wikipediaCleanData
 
 
 def dowloadWikipediaData(theme, lang):
@@ -29,7 +30,8 @@ def dowloadWikipediaData(theme, lang):
 
 
 def cleanWikipediaData(dirtyData):
-    pass
+    pattern = re.compile(r'(\(|=+)[^=)]*(=+|\))')
+    return(re.sub(pattern, '', dirtyData))
 
 
 def breakDataInSentences(cleanData):
