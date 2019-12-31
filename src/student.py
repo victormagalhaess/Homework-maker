@@ -16,3 +16,6 @@ class student(object):
 
     def getSchool(self):
         return self.school
+
+    def getHeader(self):
+        return ('Name: ' + self.name + '\nGrade: ' + self.grade + '\nTeacher: ' + self.teacher + '\nSchool: ' + self.school + '\n\n')
