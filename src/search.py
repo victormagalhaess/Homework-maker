@@ -8,7 +8,6 @@ def search(theme, lang):
     wikipediaDirtyData = dowloadWikipediaData(theme, lang)
     wikipediaCleanData = wikipediaDirtyData
     wikipediaCleanData['content'] = cleanWikipediaData(wikipediaCleanData['content'])
-    # searchData = breakDataInSentences(wikipediaCleanData)
     return wikipediaCleanData
 
 
@@ -18,7 +17,7 @@ def dowloadWikipediaData(theme, lang):
     "lang": lang
     }
 
-    with open('credentials/algorithmia.json') as json_file:
+    with open('../credentials/algorithmia.json') as json_file:
         credentials = json.load(json_file)
     apiKey = credentials['apiKey']
     
@@ -30,6 +29,6 @@ def dowloadWikipediaData(theme, lang):
 
 
 def cleanWikipediaData(dirtyData):
-    pattern = re.compile(r'(=+)[^=]*(=+)')
-    return(re.sub(pattern, '', dirtyData))
+    delimitorPattern = re.compile(r'[\[=]+[^=\]]+[\]=]+')
+    return(re.sub(delimitorPattern, '', dirtyData))
 
