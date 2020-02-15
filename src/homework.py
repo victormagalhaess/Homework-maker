@@ -6,11 +6,11 @@ from images import images
 from msword import msword
 
 def askCredentials():
-    with open('credentials/algorithmia.json', 'r') as algorithmiaCredentialsFile:
+    with open('../credentials/algorithmia.json', 'r') as algorithmiaCredentialsFile:
         credentials = json.load(algorithmiaCredentialsFile)
     if(not credentials['apiKey']):
         credentials['apiKey'] = input("Write your Algorithmia key: ")
-        with open('credentials/algorithmia.json', 'w') as algorithmiaCredentialsFile:
+        with open('../credentials/algorithmia.json', 'w') as algorithmiaCredentialsFile:
             json.dump(credentials, algorithmiaCredentialsFile)
         
 
@@ -20,7 +20,7 @@ def core():
     theme = input("Write the theme of your homework research: ")
     searchData = search(theme, language)
     images(theme)
-    msword(studentData.getHeader(), theme, searchData['content'].split('\n'), './downloads')
+    msword(studentData.getHeader(), theme, searchData['content'].split('\n'), '../downloads')
     print('Your homework is done!!!')
 
 

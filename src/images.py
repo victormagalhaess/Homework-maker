@@ -5,13 +5,13 @@ import re
 #instantiate the class
 
 def  images(theme):
-    imgDir = './downloads'
+    imgDir = '../downloads'
 
     for filename in os.listdir(os.path.abspath(imgDir)):
         os.remove(os.path.join(os.path.abspath(imgDir), filename))
 
     response = google_images_download.googleimagesdownload()
-    arguments = {"keywords":(str(theme)+','+str(theme)),"limit":2,"print_urls":True, "output_directory": '.', "image_directory": '/downloads'}
+    arguments = {"keywords":(str(theme)),"limit":2,"print_urls":True, "output_directory": '.', "image_directory": '../downloads'}
     paths = response.download(arguments)
     print(paths)
     

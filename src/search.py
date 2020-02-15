@@ -17,7 +17,7 @@ def dowloadWikipediaData(theme, lang):
     "lang": lang
     }
 
-    with open('credentials/algorithmia.json') as json_file:
+    with open('../credentials/algorithmia.json') as json_file:
         credentials = json.load(json_file)
     apiKey = credentials['apiKey']
     
